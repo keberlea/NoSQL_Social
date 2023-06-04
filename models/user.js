@@ -2,11 +2,33 @@
 const mongoose = require('mongoose');
 
 //create a new instance of the Mongoose schema
-const userSchema = new mongoose.Schema({
+const User = new mongoose.Schema({
     // individual properties and their types
     //setting require tue disalows null values
-    username: { type: String, required: True},
-    email: { type: String, required: True},
+    username: { 
+        type: String,
+        unique: true,
+        required: true,
+        trim: true
+    },
+    email: { 
+        type: String, 
+        required: true,
+        unique: true,
+        match: [/.+@.+\..+/, 'Please enter a valid e-mail address'],
+    },
+    thoughts: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'Thought',
+        },
+      ],
+    friends: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'User',
+        },
+      ],
     
 
 
@@ -22,7 +44,7 @@ const userSchema = new mongoose.Schema({
 // User is name of schema were using to create a new instance of the model
 
 
-//error handler functoin for when error occurs
+//error handler function for when error occurs
 const handleError = (err) => console.error(err);
 
 //use model to create individual documents that have properties defined in schema
