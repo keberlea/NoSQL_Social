@@ -1,8 +1,8 @@
 //Define Mongoose
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 //create a new instance of the Mongoose schema
-const User = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     // individual properties and their types
     //setting require tue disalows null values
     username: { 
@@ -15,7 +15,8 @@ const User = new mongoose.Schema({
         type: String, 
         required: true,
         unique: true,
-        match: [/.+@.+\..+/, 'Please enter a valid e-mail address'],
+        match: [
+            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid e-mail address'],
     },
     thoughts: [
         {
@@ -29,19 +30,28 @@ const User = new mongoose.Schema({
           ref: 'User',
         },
       ],
-    
-
 
     //built in date method to get current date
     lastAccessed: { type: Date, default: Date.now },
+},
+{
+    toJSON: {
+        virtuals: true,
+        getters: true,
+    },
+    id: false,
 });
 
-
+//virtual property friendCiount that gets the number of users friends
+User.virtual('friendCount').get(function() {
+    return this.friends.length;
+});
 
 
 //using mongoose.model() to compile a model based on the schema
 // '*' name of model
 // User is name of schema were using to create a new instance of the model
+const User = model('User', userSchema);
 
 
 //error handler function for when error occurs
