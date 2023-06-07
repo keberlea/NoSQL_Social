@@ -2,7 +2,7 @@
 const { Schema, model } = require('mongoose');
 
 //create a new instance of the Mongoose schema
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     // individual properties and their types
     //setting require tue disalows null values
     username: { 
@@ -21,51 +21,35 @@ const userSchema = new mongoose.Schema({
     thoughts: [
         {
           type: Schema.Types.ObjectId,
-          ref: 'Thought',
+          ref: 'thought',
         },
       ],
     friends: [
         {
           type: Schema.Types.ObjectId,
-          ref: 'User',
+          ref: 'user',
         },
       ],
-
-    //built in date method to get current date
-    lastAccessed: { type: Date, default: Date.now },
-},
-{
+  },
+  {
     toJSON: {
         virtuals: true,
-        getters: true,
+       // getters: true,
     },
     id: false,
-});
+  }
+);
 
 //virtual property friendCiount that gets the number of users friends
-User.virtual('friendCount').get(function() {
+userSchema
+  .virtual('friendCount')
+  .get(function() {
     return this.friends.length;
 });
 
 
-//using mongoose.model() to compile a model based on the schema
-// '*' name of model
-// User is name of schema were using to create a new instance of the model
-const User = model('User', userSchema);
-
-
-//error handler function for when error occurs
-const handleError = (err) => console.error(err);
-
-//use model to create individual documents that have properties defined in schema
-User
-    .create({
-
-    })
-    .then(result => console.log('Created new user', result))
-    .catch(err => handleError(err));
-
-
+//initialize user model
+const User = model('user', userSchema);
 
 
 
