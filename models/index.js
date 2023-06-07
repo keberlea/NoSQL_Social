@@ -1,3 +1,3 @@
-const socialSchema = require('./socialSchema');
+const socialSchema = require('./user');
 
 module.exports = { socialSchema}
