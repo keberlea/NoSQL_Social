@@ -46,18 +46,15 @@ module.exports = {
           { _id: req.params.thoughtId }, 
           {
             thoughtText: req.body.thoughtText,
-            username: req.body.username
+            //username: req.body.username
           }, 
-          { new: true }, 
-          (err, result) => {
-            if (result) {
-              res.status(200).json(result);
-              console.log(`Updated: ${result}`);
-            } else {
-              console.log(err);
-              res.status(500).json({ message: 'error', err });
-            }
-          }
+          { new: true })
+          .then((thought) =>
+            !thought
+              ? res.status(404).json({ message: 'No thought with this id!' })
+              : res.json(user)
+          )
+          .catch((err) => res.status(400).json(err)
       )
   },
 
@@ -104,11 +101,9 @@ module.exports = {
     )
       .then((thought) =>
         !thought
-          ? res.status(404).json({ message: 'No thought with this id!' })
-          : res.json(`Reaction deleted`)
+        ? res.status(404).json({ message: 'No thought with this id!' })
+        : res.json(`Reaction deleted`)
       )
       .catch((err) => res.status(500).json(err));
   },
-
-
 };
