@@ -2,6 +2,8 @@
 
 ![Badge](https://img.shields.io/badge/license-MIT-blue)
 
+Link to walkthrough of routes: [Video Walkthrough](https://drive.google.com/file/d/1ZngbVoFKYsn6oJEEZ3r851kxJCi-93-D/view)
+
 ## Table of Contents
 ---
 * [Installation](#installation)
@@ -33,14 +35,14 @@ To install this project:
 ## Packages
 ---
 General Technologies: 
-- Javascript
-- Node.js
+- ![Javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+- ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+- ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 - Git 
 - Insomnia
-- MongoDB
 
 NPM Packages
-- express
+- ![express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
 - mongoose 
 - moment
 
@@ -75,17 +77,20 @@ Thought + Reactions <br>
 
 ### Screenshots
 --- 
-User Routes 
-![screenshot](./assets/userRoutes.gif)
+User Routes <br>
+![UserRoutesGif](assets/UserRoutes.gif)
 <br>
+
 Friend Routes <br>
-![screenshot](./assets/friendRoutes.gif) 
+![FriendRoutesGif](assets/FriendRoutes.gif)
 <br>
-Thought Routes
-![screenshot](./assets/thoughtRoutes.gif)
+
+Thought Routes<br>
+![ThoughtRoutesGif](assets/ThoughtRoutes.gif)
 <br>
+
 Reaction Routes <br>
-![screenshot](./assets/reactionRoutes.gif) 
+![Alt text](assets/ReactionRoutes.gif)
 <br>
 
 ## License 
@@ -95,7 +100,7 @@ Reaction Routes <br>
 This application is covered by the MIT license.
 
 <br>
-
+ 
 ## Contributing 
 ---
 This project was completed by myself, Alicia Keberle, as part of the University of Oregon Full Stack Development Bootcamp. If you would like to contribute, i am always looking for ways to ameliorate my projects.
