@@ -46,11 +46,10 @@ module.exports = {
           { _id: req.params.thoughtId }, 
           {
             thoughtText: req.body.thoughtText,
-            //username: req.body.username
           }, 
           { new: true })
-          .then((thought) =>
-            !thought
+          .then((user) =>
+            !user
               ? res.status(404).json({ message: 'No thought with this id!' })
               : res.json(user)
           )
